@@ -130,8 +130,13 @@ ExpectedResult WindowsFormsResult(string expectedAgent) => new ExpectedResult("P
 //////////////////////////////////////////////////////////////////////
 
 Task("Appveyor")
-	.IsDependentOn("BuildTestAndPackage")
-	.IsDependentOn("Publish");
+	.IsDependentOn("DumpSettings")
+	.IsDependentOn("Build")
+	.IsDependentOn("Test")
+	.IsDependentOn("Package")
+	.IsDependentOn("Publish")
+	.IsDependentOn("CreateDraftRelease")
+	.IsDependentOn("CreateProductionRelease");
 
 Task("Default")
     .IsDependentOn("Build");
