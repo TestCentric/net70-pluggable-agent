@@ -1,7 +1,7 @@
 #tool NuGet.CommandLine&version=6.0.0
 
 // Load the recipe
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.0-dev00061
+#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.0
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
 
@@ -69,7 +69,7 @@ var NuGetAgentPackage = new NuGetPackage(
 	id: "NUnit.Extension.Net70PluggableAgent",
 	source: "nuget/Net70PluggableAgent.nuspec",
 	basePath: BuildSettings.OutputDirectory,
-	testRunner: new GuiRunner("TestCentric.GuiRunner", "2.0.0-dev00272"),
+	testRunner: new GuiRunner("TestCentric.GuiRunner", "2.0.0-alpha8"),
 	checks: new PackageCheck[] {
 		HasFiles("LICENSE.txt"),
 		HasDirectory("tools").WithFiles("net70-agent-launcher.dll", "nunit.engine.api.dll"),
@@ -83,7 +83,7 @@ var ChocolateyAgentPackage = new ChocolateyPackage(
 	id: "nunit-extension-net70-pluggable-agent",
 	source: "choco/net70-pluggable-agent.nuspec",
 	basePath: BuildSettings.OutputDirectory,
-	testRunner: new GuiRunner("testcentric-gui", "2.0.0-dev00272"),
+	testRunner: new GuiRunner("testcentric-gui", "2.0.0-alpha8"),
 	checks: new PackageCheck[] {
 		HasDirectory("tools").WithFiles("net70-agent-launcher.dll", "nunit.engine.api.dll")
 			.WithFiles("LICENSE.txt", "VERIFICATION.txt"),
@@ -130,8 +130,13 @@ ExpectedResult WindowsFormsResult(string expectedAgent) => new ExpectedResult("P
 //////////////////////////////////////////////////////////////////////
 
 Task("Appveyor")
-	.IsDependentOn("BuildTestAndPackage")
-	.IsDependentOn("Publish");
+	.IsDependentOn("DumpSettings")
+	.IsDependentOn("Build")
+	.IsDependentOn("Test")
+	.IsDependentOn("Package")
+	.IsDependentOn("Publish")
+	.IsDependentOn("CreateDraftRelease")
+	.IsDependentOn("CreateProductionRelease");
 
 Task("Default")
     .IsDependentOn("Build");
