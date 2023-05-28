@@ -1,7 +1,7 @@
 #tool NuGet.CommandLine&version=6.0.0
 
 // Load the recipe
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.1-dev00015
+#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.1-dev00022
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
 
@@ -17,7 +17,9 @@ BuildSettings.Initialize
 	githubRepository: "net70-pluggable-agent"
 );
 
-// Define Package Tests
+BuildSettings.Packages.AddRange(new PluggableAgentFactory(".NetCoreApp, Version=7.0").Packages);
+
+/*// Define Package Tests
 //   Level 1 tests are run each time we build the packages
 //   Level 2 tests are run for PRs and when packages will be published
 //   Level 3 tests are run only when publishing a release
@@ -145,7 +147,7 @@ ExpectedResult WindowsFormsResult(string expectedAgent) => new ExpectedResult("P
 	{
 		new ExpectedAssemblyResult("windows-forms-test.dll", expectedAgent)
 	}
-};
+};*/
 
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
