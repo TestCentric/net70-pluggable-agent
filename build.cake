@@ -1,7 +1,7 @@
 #tool NuGet.CommandLine&version=6.0.0
 
 // Load the recipe
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.1-dev00022
+#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.1-dev00033
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
 
@@ -12,7 +12,7 @@ BuildSettings.Initialize
 	context: Context,
 	title: "Net70PluggableAgent",
 	solutionFile: "net70-pluggable-agent.sln",
-	unitTests: "net70-agent-launcher.tests.exe",
+	unitTests: "**/*.tests.exe",
 	githubOwner: "TestCentric",
 	githubRepository: "net70-pluggable-agent"
 );
