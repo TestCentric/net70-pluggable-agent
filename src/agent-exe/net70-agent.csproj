@@ -11,8 +11,8 @@
         <ApplicationIcon>..\testcentric.ico</ApplicationIcon>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <CheckEolTargetFramework>false</CheckEolTargetFramework>
-		<AssemblyTitle>Net60 Pluggable Agent</AssemblyTitle>
-		<Description>Pluggable Agent for running tests under .NET 6.0</Description>
+		<AssemblyTitle>Net70 Pluggable Agent</AssemblyTitle>
+		<Description>Pluggable Agent for running tests under .NET 7.0</Description>
 		<Copyright>Copyright (c) 2023 Charlie Poole</Copyright>
 	</PropertyGroup>
 
