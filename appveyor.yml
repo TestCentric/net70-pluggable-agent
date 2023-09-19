@@ -7,7 +7,7 @@ build_script:
   - ps: .\build.ps1 --Target=AppVeyor --Configuration=Release
   
 # disable built-in tests.
-test: off
+test: false
 
 artifacts:
 - path: package\*.nupkg
