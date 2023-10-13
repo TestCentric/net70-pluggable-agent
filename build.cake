@@ -74,13 +74,14 @@ BuildSettings.Packages.Add(new NuGetPackage(
 		.WithRootFiles("../../LICENSE.txt", "../../README.md", "../../testcentric.png")
 		.WithDirectories(
 			new DirectoryContent("tools").WithFiles(
-				"net70-agent-launcher.dll", "net70-agent-launcher.pdb", "nunit.engine.api.dll", "testcentric.engine.api.dll" ),
+				"net70-agent-launcher.dll", "net70-agent-launcher.pdb",
+				"testcentric.extensibility.api.dll", "testcentric.engine.api.dll" ),
 			new DirectoryContent("tools/agent").WithFiles(
 				"agent/net70-agent.dll", "agent/net70-agent.pdb", "agent/net70-agent.dll.config",
 				"agent/net70-agent.deps.json", $"agent/net70-agent.runtimeconfig.json",
-				"agent/nunit.engine.api.dll", "agent/testcentric.engine.core.dll",
+				"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
 				"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll",
-				"agent/Microsoft.Extensions.DependencyModel.dll") ),
+				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
 	testRunner: new AgentRunner(BuildSettings.NuGetTestDirectory + "TestCentric.Extension.net70PluggableAgent/tools/agent/net70-agent.dll"),
 	tests: PackageTests) );
 	
@@ -94,13 +95,14 @@ BuildSettings.Packages.Add(new ChocolateyPackage(
 			.WithDirectories(
 				new DirectoryContent("tools").WithFiles(
 					"../../LICENSE.txt", "../../README.md", "../../VERIFICATION.txt",
-					"net70-agent-launcher.dll", "net70-agent-launcher.pdb", "nunit.engine.api.dll", "testcentric.engine.api.dll" ),
+					"net70-agent-launcher.dll", "net70-agent-launcher.pdb",
+					"testcentric.extensibility.api.dll", "testcentric.engine.api.dll" ),
 				new DirectoryContent("tools/agent").WithFiles(
 					"agent/net70-agent.dll", "agent/net70-agent.pdb", "agent/net70-agent.dll.config",
 					"agent/net70-agent.deps.json", $"agent/net70-agent.runtimeconfig.json",
-					"agent/nunit.engine.api.dll", "agent/testcentric.engine.core.dll",
+					"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
 					"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll",
-					"agent/Microsoft.Extensions.DependencyModel.dll") ),
+					"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
 		testRunner: new AgentRunner(BuildSettings.ChocolateyTestDirectory + "testcentric-extension-net70-pluggable-agent/tools/agent/net70-agent.dll"),
 		tests: PackageTests) );
 
