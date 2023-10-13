@@ -3,7 +3,6 @@
 // Licensed under the MIT License. See LICENSE file in root directory.
 // ***********************************************************************
 
-using NUnit.Engine;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using TestCentric.Agents.TextOutput;
+using TestCentric.Engine;
 using TestCentric.Engine.Internal;
 using TestCentric.Engine.Runners;
 
@@ -44,7 +44,7 @@ namespace TestCentric.Agents
 #if NETFRAMEWORK
                 var runner = new TestDomainRunner(new NUnit.Engine.TestPackage(testFile));
 #else
-                var runner = new LocalTestRunner(new NUnit.Engine.TestPackage(testFile));
+                var runner = new LocalTestRunner(new TestPackage(testFile));
 #endif
                 var xmlResult = runner.Run(null, TestFilter.Empty).Xml;
 
