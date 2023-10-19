@@ -17,8 +17,7 @@
 	</PropertyGroup>
 
     <ItemGroup>
-		<PackageReference Include="TestCentric.InternalTrace" Version="1.0.0" />
-		<PackageReference Include="TestCentric.Engine.Core" Version="2.0.0-beta3" />
+		<ProjectReference Include="..\TestCentric.Agent.Core\TestCentric.Agent.Core.csproj" />
     </ItemGroup>
 	
     <ItemGroup>
