@@ -1,9 +1,7 @@
 // Load the recipe
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.1.0-dev00050
+#load nuget:?package=TestCentric.Cake.Recipe&version=1.1.0-dev00054
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
-
-var target = Argument("target", Argument("t", "Default"));
 
 BuildSettings.Initialize
 (
@@ -124,4 +122,4 @@ Task("Default")
 // EXECUTION
 //////////////////////////////////////////////////////////////////////
 
-RunTarget(target);
+RunTarget(CommandLineOptions.Target);
