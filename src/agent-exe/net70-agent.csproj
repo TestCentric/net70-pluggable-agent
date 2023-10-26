@@ -16,9 +16,10 @@
 		<Copyright>Copyright (c) 2023 Charlie Poole</Copyright>
 	</PropertyGroup>
 
-    <ItemGroup>
-		<ProjectReference Include="..\TestCentric.Agent.Core\TestCentric.Agent.Core.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="TestCentric.InternalTrace" Version="1.0.0" />
+		<PackageReference Include="TestCentric.Agent.Core" Version="2.0.0-dev00002" />
+	</ItemGroup>
 	
     <ItemGroup>
         <None Update="app.config">
