@@ -1,5 +1,5 @@
 // Load the recipe
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.1.0-dev00058
+#load nuget:?package=TestCentric.Cake.Recipe&version=1.1.0-dev00060
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
 
@@ -78,7 +78,7 @@ BuildSettings.Packages.Add(new NuGetPackage(
 				"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
 				"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll", "agent/TestCentric.InternalTrace.dll",
 				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
-	testRunner: new AgentRunner(BuildSettings.NuGetTestDirectory + "TestCentric.Extension.net70PluggableAgent/tools/agent/net70-agent.dll"),
+	testRunner: new AgentRunner(BuildSettings.NuGetTestDirectory + "TestCentric.Extension.net70PluggableAgent." + BuildSettings.PackageVersion + "/tools/agent/net70-agent.dll"),
 	tests: PackageTests) );
 	
 BuildSettings.Packages.Add(new ChocolateyPackage(
@@ -99,7 +99,7 @@ BuildSettings.Packages.Add(new ChocolateyPackage(
 					"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
 					"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll", "agent/TestCentric.InternalTrace.dll",
 					"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
-		testRunner: new AgentRunner(BuildSettings.ChocolateyTestDirectory + "testcentric-extension-net70-pluggable-agent/tools/agent/net70-agent.dll"),
+		testRunner: new AgentRunner(BuildSettings.ChocolateyTestDirectory + "testcentric-extension-net70-pluggable-agent." + BuildSettings.PackageVersion + "/tools/agent/net70-agent.dll"),
 		tests: PackageTests) );
 
 //////////////////////////////////////////////////////////////////////
