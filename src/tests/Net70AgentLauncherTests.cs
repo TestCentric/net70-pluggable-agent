@@ -177,7 +177,7 @@ namespace TestCentric.Engine.Services
         [Test]
         public void ExecuteTestDirectly()
         {
-            var package = new TestPackage(Path.Combine(TESTS_DIR, "net7.0/mock-assembly.dll"));
+            var package = new TestPackage(Path.Combine(TESTS_DIR, "net7.0/mock-assembly.dll")).SubPackages[0];
             package.AddSetting("TargetRuntimeFramework", "netcore-7.0");
 
             Assert.That(_launcher.CanCreateProcess(package));
