@@ -1,5 +1,5 @@
 // Load the recipe
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.1.0-dev00062
+#load nuget:?package=TestCentric.Cake.Recipe&version=1.1.0-dev00063
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
 
@@ -77,30 +77,32 @@ BuildSettings.Packages.Add(new NuGetPackage(
 				"agent/net70-agent.deps.json", $"agent/net70-agent.runtimeconfig.json",
 				"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
 				"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll", "agent/TestCentric.InternalTrace.dll",
-				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
+				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll",
+				"agent/System.Text.Encodings.Web.dll", "agent/System.Text.Json.dll") ),
 	testRunner: new AgentRunner(BuildSettings.NuGetTestDirectory + "TestCentric.Extension.net70PluggableAgent." + BuildSettings.PackageVersion + "/tools/agent/net70-agent.dll"),
 	tests: PackageTests) );
 	
 BuildSettings.Packages.Add(new ChocolateyPackage(
-		"testcentric-extension-net70-pluggable-agent",
-		title: ".NET 70 Pluggable Agent",
-		description: "TestCentric engine extension for running tests under .NET 7.0",
-		tags: new [] { "testcentric", "pluggable", "agent", "net70" },
-		packageContent: new PackageContent()
-			.WithRootFiles("../../testcentric.png")
-			.WithDirectories(
-				new DirectoryContent("tools").WithFiles(
-					"../../LICENSE.txt", "../../README.md", "../../VERIFICATION.txt",
-					"net70-agent-launcher.dll", "net70-agent-launcher.pdb",
-					"testcentric.extensibility.api.dll", "testcentric.engine.api.dll" ),
-				new DirectoryContent("tools/agent").WithFiles(
-					"agent/net70-agent.dll", "agent/net70-agent.pdb", "agent/net70-agent.dll.config", "agent/TestCentric.Agent.Core.dll",
-					"agent/net70-agent.deps.json", $"agent/net70-agent.runtimeconfig.json",
-					"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
-					"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll", "agent/TestCentric.InternalTrace.dll",
-					"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
-		testRunner: new AgentRunner(BuildSettings.ChocolateyTestDirectory + "testcentric-extension-net70-pluggable-agent." + BuildSettings.PackageVersion + "/tools/agent/net70-agent.dll"),
-		tests: PackageTests) );
+	"testcentric-extension-net70-pluggable-agent",
+	title: ".NET 70 Pluggable Agent",
+	description: "TestCentric engine extension for running tests under .NET 7.0",
+	tags: new [] { "testcentric", "pluggable", "agent", "net70" },
+	packageContent: new PackageContent()
+		.WithRootFiles("../../testcentric.png")
+		.WithDirectories(
+			new DirectoryContent("tools").WithFiles(
+				"../../LICENSE.txt", "../../README.md", "../../VERIFICATION.txt",
+				"net70-agent-launcher.dll", "net70-agent-launcher.pdb",
+				"testcentric.extensibility.api.dll", "testcentric.engine.api.dll" ),
+			new DirectoryContent("tools/agent").WithFiles(
+				"agent/net70-agent.dll", "agent/net70-agent.pdb", "agent/net70-agent.dll.config", "agent/TestCentric.Agent.Core.dll",
+				"agent/net70-agent.deps.json", $"agent/net70-agent.runtimeconfig.json",
+				"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
+				"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll", "agent/TestCentric.InternalTrace.dll",
+				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll",
+				"agent/System.Text.Encodings.Web.dll", "agent/System.Text.Json.dll") ),
+	testRunner: new AgentRunner(BuildSettings.ChocolateyTestDirectory + "testcentric-extension-net70-pluggable-agent." + BuildSettings.PackageVersion + "/tools/agent/net70-agent.dll"),
+	tests: PackageTests) );
 
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS

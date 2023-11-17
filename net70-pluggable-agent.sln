@@ -25,25 +25,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net70-agent-launcher", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net70-agent", "src\agent-exe\net70-agent.csproj", "{A527285F-5383-483E-972E-8B41FBDE877A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cake", "cake", "{7B695A1B-C3C8-472A-924A-0AFA437C100A}"
-	ProjectSection(SolutionItems) = preProject
-		cake\build-settings.cake = cake\build-settings.cake
-		cake\building.cake = cake\building.cake
-		cake\check-headers.cake = cake\check-headers.cake
-		cake\package-checks.cake = cake\package-checks.cake
-		cake\package-definition.cake = cake\package-definition.cake
-		cake\package-tester.cake = cake\package-tester.cake
-		cake\package-tests.cake = cake\package-tests.cake
-		cake\packaging.cake = cake\packaging.cake
-		cake\publishing.cake = cake\publishing.cake
-		cake\releasing.cake = cake\releasing.cake
-		cake\test-reports.cake = cake\test-reports.cake
-		cake\test-results.cake = cake\test-results.cake
-		cake\testcentric-gui.cake = cake\testcentric-gui.cake
-		cake\testing.cake = cake\testing.cake
-		cake\versioning.cake = cake\versioning.cake
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "windows-forms-test", "src\windows-forms-test\windows-forms-test.csproj", "{91C5D6AA-B41C-490A-8CC5-9E015A73A122}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aspnetcore-test", "src\aspnetcore-test\aspnetcore-test.csproj", "{864F8B16-F5AC-4120-BC9B-1C3B1C488DB1}"
@@ -135,9 +116,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{7B695A1B-C3C8-472A-924A-0AFA437C100A} = {49BC1DFB-828F-49F4-B2B4-752AB470481D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAB7BD1E-1034-47CD-AA8E-FD4AC034193B}
