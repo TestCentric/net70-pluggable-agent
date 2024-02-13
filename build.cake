@@ -1,5 +1,5 @@
 // Load the recipe
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.1.0-dev00064
+#load nuget:?package=TestCentric.Cake.Recipe&version=1.1.0-dev00082
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
 
@@ -61,6 +61,15 @@ var PackageTests = new PackageTest[] {
 		"tests/net7.0-windows/windows-forms-test.dll", WindowsFormsResult)
 };
 
+// Content of the agent directory is the same for both packages
+static readonly FilePath[] AGENT_FILES = {
+	"agent/net70-agent.dll", "agent/net70-agent.pdb", "agent/net70-agent.dll.config", "agent/TestCentric.Agent.Core.dll",
+	"agent/net70-agent.deps.json", $"agent/net70-agent.runtimeconfig.json",
+	"agent/TestCentric.Engine.Api.dll",
+	"agent/TestCentric.Metadata.dll", "agent/TestCentric.Extensibility.dll", "agent/TestCentric.InternalTrace.dll",
+	"agent/TestCentric.Extensibility.Api.dll", "agent/Microsoft.Extensions.DependencyModel.dll",
+	"agent/System.Text.Encodings.Web.dll", "agent/System.Text.Json.dll" };
+
 BuildSettings.Packages.Add(new NuGetPackage(
 	"TestCentric.Extension.Net70PluggableAgent",
 	title: ".NET 7.0 Pluggable Agent",
@@ -71,14 +80,8 @@ BuildSettings.Packages.Add(new NuGetPackage(
 		.WithDirectories(
 			new DirectoryContent("tools").WithFiles(
 				"net70-agent-launcher.dll", "net70-agent-launcher.pdb",
-				"testcentric.extensibility.api.dll", "testcentric.engine.api.dll" ),
-			new DirectoryContent("tools/agent").WithFiles(
-				"agent/net70-agent.dll", "agent/net70-agent.pdb", "agent/net70-agent.dll.config", "agent/TestCentric.Agent.Core.dll",
-				"agent/net70-agent.deps.json", $"agent/net70-agent.runtimeconfig.json",
-				"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
-				"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll", "agent/TestCentric.InternalTrace.dll",
-				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll",
-				"agent/System.Text.Encodings.Web.dll", "agent/System.Text.Json.dll") ),
+				"TestCentric.Extensibility.Api.dll", "Testcentric.Engine.Api.dll" ),
+			new DirectoryContent("tools/agent").WithFiles( AGENT_FILES ) ),
 	testRunner: new AgentRunner(BuildSettings.NuGetTestDirectory + "TestCentric.Extension.net70PluggableAgent." + BuildSettings.PackageVersion + "/tools/agent/net70-agent.dll"),
 	tests: PackageTests) );
 	
@@ -90,17 +93,11 @@ BuildSettings.Packages.Add(new ChocolateyPackage(
 	packageContent: new PackageContent()
 		.WithRootFiles("../../testcentric.png")
 		.WithDirectories(
-			new DirectoryContent("tools").WithFiles(
+			new DirectoryContent("tools").WithFiles( 
 				"../../LICENSE.txt", "../../README.md", "../../VERIFICATION.txt",
 				"net70-agent-launcher.dll", "net70-agent-launcher.pdb",
-				"testcentric.extensibility.api.dll", "testcentric.engine.api.dll" ),
-			new DirectoryContent("tools/agent").WithFiles(
-				"agent/net70-agent.dll", "agent/net70-agent.pdb", "agent/net70-agent.dll.config", "agent/TestCentric.Agent.Core.dll",
-				"agent/net70-agent.deps.json", $"agent/net70-agent.runtimeconfig.json",
-				"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
-				"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll", "agent/TestCentric.InternalTrace.dll",
-				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll",
-				"agent/System.Text.Encodings.Web.dll", "agent/System.Text.Json.dll") ),
+				"TestCentric.Extensibility.Api.dll", "TestCentric.Engine.Api.dll" ),
+			new DirectoryContent("tools/agent").WithFiles( AGENT_FILES) ),
 	testRunner: new AgentRunner(BuildSettings.ChocolateyTestDirectory + "testcentric-extension-net70-pluggable-agent." + BuildSettings.PackageVersion + "/tools/agent/net70-agent.dll"),
 	tests: PackageTests) );
 
@@ -124,4 +121,4 @@ Task("Default")
 // EXECUTION
 //////////////////////////////////////////////////////////////////////
 
-RunTarget(CommandLineOptions.Target);
+RunTarget(CommandLineOptions.Target.Value);
