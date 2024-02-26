@@ -102,23 +102,7 @@ BuildSettings.Packages.Add(new ChocolateyPackage(
 	tests: PackageTests) );
 
 //////////////////////////////////////////////////////////////////////
-// TASK TARGETS
-//////////////////////////////////////////////////////////////////////
-
-Task("Appveyor")
-	.IsDependentOn("DumpSettings")
-	.IsDependentOn("Build")
-	.IsDependentOn("Test")
-	.IsDependentOn("Package")
-	.IsDependentOn("Publish")
-	.IsDependentOn("CreateDraftRelease")
-	.IsDependentOn("CreateProductionRelease");
-
-Task("Default")
-    .IsDependentOn("Build");
-
-//////////////////////////////////////////////////////////////////////
 // EXECUTION
 //////////////////////////////////////////////////////////////////////
 
-RunTarget(CommandLineOptions.Target.Value);
+Build.Run();
