@@ -92,7 +92,7 @@ BuildSettings.Packages.Add(new NuGetPackage(
 	
 BuildSettings.Packages.Add(new ChocolateyPackage(
 	"testcentric-extension-net70-pluggable-agent",
-	title: ".NET 70 Pluggable Agent",
+	title: "TestCentric Extension - .NET 70 Pluggable Agent",
 	description: "TestCentric engine extension for running tests under .NET 7.0",
 	tags: new [] { "testcentric", "pluggable", "agent", "net70" },
 	packageContent: new PackageContent()
